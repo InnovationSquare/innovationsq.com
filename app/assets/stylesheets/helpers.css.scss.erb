@@ -1,0 +1,12 @@
+.clear { clear:both; display:block; }
+
+@mixin with-text { text-indent:-8000px; overflow:hidden; display:block; }
+.with-text { @include with-text; }
+
+@mixin invisible { opacity:0; filter:alpha(opacity=0); -ms-filter:"alpha(opacity=0)"; }
+.invisible { @include invisible; }
+
+@mixin clean { list-style:none; margin:0; }
+ul.clean, ol.clean { @include clean; }
+
+@mixin rounded($radius:3px) { -webkit-border-radius:$radius; -moz-border-radius:$radius; border-radius:$radius; }
