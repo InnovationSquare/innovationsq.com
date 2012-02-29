@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html public "✰">
+<!--[if lt IE 7]> <html lang="en-us" class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-us" class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-us" class="no-js ie8"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-us" class="no-js"> <!--<![endif]-->
 <head>
-  <title>InnovationsqCom</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  
+  <title dir="ltr">InnovationSquare</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <body>
+    <%= yield %>
+  </body>
 </html>
