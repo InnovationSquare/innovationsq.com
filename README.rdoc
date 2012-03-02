@@ -2,6 +2,10 @@
 
 An online community for #innovateRAL, built the open source way.
 
+=== Docs
+
+Full documentation and how to contribute is coming soon.
+
 === TODO
   
 License
