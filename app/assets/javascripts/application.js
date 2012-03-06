@@ -11,5 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
+// require jquery_ujs
 //= require_tree .
+
+$(function () {
+  
+  $('input.email').focus(function () {
+    if ($(this).val() == 'Enter email')
+      $(this).val('');
+  });
+  
+});
