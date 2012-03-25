@@ -1,0 +1,10 @@
+development:
+  host: localhost
+  database: innovationsq_development
+
+test:
+  host: localhost
+  database: innovationsq_test
+
+production:
+  uri: <%= ENV['MONGOLAB_URI'] %>
