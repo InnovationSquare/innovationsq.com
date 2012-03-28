@@ -5,13 +5,17 @@ An online community for #innovateRAL, built the open source way.
 === Follow
 
 Twitter: @innovationsq
+
 Web: innovationsq.com
+
 Plan with us on Trello: https://trello.com/innovationsq
 
 === Site Architecture
 
 Primary: https://docs.google.com/a/innovationsq.com/drawings/d/1XX72kotZCRTppSu8N-XB7v0zAf1y8pLkxVsXDVsrSYo/edit
+
 Browse: https://docs.google.com/a/innovationsq.com/drawings/d/1-SVdnI7YnxeR4QWxk22FgYHLEAsPb58HlRyNM8G0T9Q/edit
+
 Profiles: https://docs.google.com/a/innovationsq.com/drawings/d/1GhnU9TN4jkhakX1CM7hubkMz5xoUQUzqNoJd52ee8mE/edit
 
 === Docs
