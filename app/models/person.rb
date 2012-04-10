@@ -14,6 +14,7 @@ class Person
 
   belongs_to :created_companies, :class_name => "Company", :inverse_of => :creator
   has_and_belongs_to_many :founded_companies, :class_name => "Company", :inverse_of => :founders
+  has_many :docs
 
   attr_accessible :username, :first_name, :last_name
 

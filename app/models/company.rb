@@ -23,6 +23,8 @@ class Company
 
   has_one :creator, :class_name => "Person", :inverse_of => :created_companies
   has_and_belongs_to_many :founders, :class_name => "Person", :inverse_of => :founded_companies
+  has_many :docs
+  belongs_to :pitch_deck, :class_name => "Doc"
 
   attr_accessible :name, :handle
 

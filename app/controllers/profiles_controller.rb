@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
       render :action => "person"
     elsif @company
       @title = @company.name
+      @pitch_deck = @company.pitch_deck
       render :action => "company"
     else
       # 404

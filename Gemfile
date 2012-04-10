@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.3'
 gem 'unicorn'
 gem 'mongo'
 gem 'mongoid'
@@ -18,6 +18,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'awesome_print', :require => 'ap'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -25,3 +29,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'slim'
 gem 'slim-rails'
+
+gem 'rscribd'
