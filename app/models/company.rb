@@ -7,7 +7,24 @@ class Company
   field :handle, :type => String
   index :handle, :unique => true
 
-  attr_accessible :name
+  field :recommendations_count, :type => Integer, :default => 0
+  field :followers_count, :type => Integer, :default => 0
+
+  field :district, :type => String
+  field :city, :type => String
+  field :state, :type => String
+
+  field :changing_line, :type => String
+  field :description, :type => String
+  
+  field :hiring, :type => Boolean, :default => false
+  field :seeking_investors, :type => Boolean, :default => false
+  field :startup, :type => Boolean, :default => false
+
+  has_one :creator, :class_name => "Person", :inverse_of => :created_companies
+  has_and_belongs_to_many :founders, :class_name => "Person", :inverse_of => :founded_companies
+
+  attr_accessible :name, :handle
 
   before_save :set_handle
 
@@ -17,10 +34,6 @@ class Company
       where(:handle => handle).limit(1).first
     end
 
-  end
-
-  def ensure_unique_url
-    true
   end
 
   def to_param

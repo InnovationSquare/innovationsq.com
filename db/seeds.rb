@@ -2,6 +2,10 @@
 Company.delete_all
 Person.delete_all
 
-Company.create :name => "Biotech & Engineering"
+c = Company.create :name => "Biotech & Engineering Corp", :handle => "biotech"
 
-Person.create :username => "cw"
+p = Person.create :username => "cw"
+
+c.creator = p
+c.founders << p
+c.save
