@@ -1,0 +1,9 @@
+#companyHeader.grid_12.alpha
+  .img
+  h1 = "#{@company.name}"
+
+.grid_9.alpha
+  - if @pitch_deck
+    #pitchDeck
+      iframe class="scribd_iframe_embed" src="#{@pitch_deck.embed_src}" data-auto-height="true" data-aspect-ratio="" scrolling="no" width="100%" height="600" frameborder="0"
+.grid_3.omega

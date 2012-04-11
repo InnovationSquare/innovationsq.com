@@ -3,7 +3,7 @@
   h1 = "#{@company.name}"
 
 .grid_9.alpha
-  - for iso in @isotopes
-    p = "#{iso.text}"
+  - for doc in @docs do
+    img src="#{doc.thumbnail_url}"
 
 .grid_3.omega

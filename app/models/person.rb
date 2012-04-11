@@ -28,6 +28,14 @@ class Person
 
   end
 
+  def recommend!(company)
+    Recommendation.make! self, company
+  end
+
+  def full_name
+    [first_name, last_name].compact.join ' '
+  end
+
   def to_param
     handle
   end
