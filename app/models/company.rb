@@ -16,7 +16,7 @@ class Company
 
   field :changing_line, :type => String
   field :description, :type => String
-  
+
   field :hiring, :type => Boolean, :default => false
   field :seeking_investors, :type => Boolean, :default => false
   field :startup, :type => Boolean, :default => false
