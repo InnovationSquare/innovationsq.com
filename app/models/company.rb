@@ -8,7 +8,6 @@ class Company
   index :handle, :unique => true
 
   field :recommendations_count, :type => Integer, :default => 0
-  field :followers_count, :type => Integer, :default => 0
 
   field :district, :type => String
   field :city, :type => String
@@ -23,6 +22,9 @@ class Company
 
   has_one :creator, :class_name => "Person", :inverse_of => :created_companies
   has_and_belongs_to_many :founders, :class_name => "Person", :inverse_of => :founded_companies
+
+  has_and_belongs_to_many :followers, :class_name => "Person", :inverse_of => :following
+
   has_many :docs
   has_many :isotopes, :as => :attached_to
   belongs_to :pitch_deck, :class_name => "Doc"
@@ -37,6 +39,10 @@ class Company
       where(:handle => handle).limit(1).first
     end
 
+  end
+
+  def followed_by?(person)
+    self.followers.include?(person)
   end
 
   def to_param

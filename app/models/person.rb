@@ -14,6 +14,7 @@ class Person
 
   belongs_to :created_companies, :class_name => "Company", :inverse_of => :creator
   has_and_belongs_to_many :founded_companies, :class_name => "Company", :inverse_of => :founders
+  has_and_belongs_to_many :following, :class_name => "Company", :inverse_of => :followers
   has_many :docs
 
   attr_accessible :username, :first_name, :last_name
@@ -30,6 +31,10 @@ class Person
 
   def recommend!(company)
     Recommendation.make! self, company
+  end
+
+  def follow!(company)
+    company.followers << self unless company.followed_by?(self)
   end
 
   def full_name

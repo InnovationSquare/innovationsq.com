@@ -16,3 +16,5 @@ c.founders << p
 c.save
 
 p.recommend! c
+p.follow! c
+p.follow! c
