@@ -19,6 +19,9 @@ class Doc
 
   attr_accessible :title, :company, :creator, :scribd_doc_id, :thumbnail_url
 
+  after_create :inc_counter_cache
+  after_destroy :dec_counter_cache
+
   class << self
     
     def upload!(title, company, creator, file_path)
@@ -45,6 +48,14 @@ class Doc
 
   def embed_src
     "http://www.scribd.com/embeds/#{scribd_doc_id}/content?start_page=1&view_mode=list&access_key=#{scribd_doc_access_key}"
+  end
+
+  def inc_counter_cache
+    self.company.inc :docs_count, 1
+  end
+
+  def dec_counter_cache
+    self.company.inc :docs_count, -1
   end
 
 end

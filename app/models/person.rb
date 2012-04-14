@@ -13,7 +13,11 @@ class Person
   field :title, :type => String
 
   belongs_to :created_companies, :class_name => "Company", :inverse_of => :creator
+  
   has_and_belongs_to_many :founded_companies, :class_name => "Company", :inverse_of => :founders
+  has_and_belongs_to_many :invested_companies, :class_name => "Company", :inverse_of => :investors
+  has_and_belongs_to_many :staff_companies, :class_name => "Company", :inverse_of => :staff
+  
   has_and_belongs_to_many :following, :class_name => "Company", :inverse_of => :followers
   has_many :docs
 

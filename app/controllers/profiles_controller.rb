@@ -10,8 +10,13 @@ class ProfilesController < ApplicationController
     if @person
       render :action => "person"
     elsif @company
+      
       @title = @company.name
       @isotopes = @company.isotopes
+
+      @recommended = @company.recommended_by? current_person
+      @following = @company.followed_by? current_person
+
       render :action => "company"
     else
       # 404

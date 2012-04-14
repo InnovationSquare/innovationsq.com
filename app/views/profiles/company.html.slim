@@ -1,9 +1,42 @@
 #companyHeader.grid_12.alpha
   .img
-  h1 = "#{@company.name}"
+  .h
+    h1 = "#{@company.name}"
+    - if @recommended
+      a.button.recommended href="/#{@company.handle}/unrecommend"
+    - else
+      a.button.recommend href="/#{@company.handle}/recommend"
+    - if @following
+      a.button.following href="/#{@company.handle}/following"
+    - else
+      a.button.follow href="/#{@company.handle}/follow"
+    .stat
+      strong =' @company.recommendations_count
+      = @company.recommendations_count == 1 ? "recommendation" : "recommendations"
+    .stat
+      strong =' @company.followers.length
+      = @company.followers.length == 1 ? "follower" : "followers"
+    .stat
+      strong =' @company.district
+      = @company.city
 
 .grid_9.alpha
-  - for iso in @isotopes
-    p = "#{iso.text}"
+  nav.interior
+    a.selected.nav-stream href="/#{@company.handle}"
+      span
+      = "Stream"
+    - if @company.has_pitch_deck?
+      a.nav-pitch-deck href="/#{@company.handle}/pitch-deck" Pitch Deck
+    a.nav-docs href="/#{@company.handle}/docs" =' "#{@company.docs_count} " + (@company.docs_count == 1 ? "Document" : "Documents")
+    a.nav-members href="/#{@company.handle}/members" Members
+
+  .isotopes
+    - for iso in @isotopes
+      .isotope
+        img.profile-photo src="/assets/photo-tiny.jpg"
+        .dot
+        .body
+          .pointer
+          p = "#{iso.text}"
 
 .grid_3.omega

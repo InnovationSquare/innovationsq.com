@@ -1,0 +1,27 @@
+.button {
+  display:block; height:44px; padding:0; background:transparent url(<%=asset_data_uri 'buttons.png' %>) left top no-repeat;
+  &.recommend {
+    width:127px;
+    &:link, &:visited { background-position:0 0; }
+    &:hover { background-position:-127px 0; }
+    &:active { background-position:-254px 0; }
+  }
+  &.recommended {
+    width:146px;
+    &:link, &:visited { background-position:0 -44px; }
+    &:hover { background-position:-146px -44px; }
+    &:active { background-position:-292px -44px; }
+  }
+  &.follow {
+    width:94px;
+    &:link, &:visited { background-position:0 -88px; }
+    &:hover { background-position:-94px -88px; }
+    &:active { background-position:-188px -88px; }
+  }
+  &.following {
+    width:104px;
+    &:link, &:visited { background-position:0 -132px; }
+    &:hover { background-position:-104px -132px; }
+    &:active { background-position:-208px -132px; }
+  }
+}

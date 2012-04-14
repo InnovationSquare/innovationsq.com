@@ -8,6 +8,8 @@ class Company
   index :handle, :unique => true
 
   field :recommendations_count, :type => Integer, :default => 0
+  field :docs_count, :type => Integer, :default => 0
+  field :members_count, :type => Integer, :default => 0
 
   field :district, :type => String
   field :city, :type => String
@@ -21,7 +23,10 @@ class Company
   field :startup, :type => Boolean, :default => false
 
   has_one :creator, :class_name => "Person", :inverse_of => :created_companies
+
   has_and_belongs_to_many :founders, :class_name => "Person", :inverse_of => :founded_companies
+  has_and_belongs_to_many :investors, :class_name => "Person", :inverse_of => :invested_companies
+  has_and_belongs_to_many :staff, :class_name => "Person", :inverse_of => :staff_companies
 
   has_and_belongs_to_many :followers, :class_name => "Person", :inverse_of => :following
 
@@ -29,7 +34,7 @@ class Company
   has_many :isotopes, :as => :attached_to
   belongs_to :pitch_deck, :class_name => "Doc"
 
-  attr_accessible :name, :handle
+  attr_accessible :name, :handle, :district, :city, :state
 
   before_save :set_handle
 
@@ -41,8 +46,16 @@ class Company
 
   end
 
+  def recommended_by?(person)
+    Recommendation.company_recommended_by?(self, person)
+  end
+
   def followed_by?(person)
     self.followers.include?(person)
+  end
+
+  def has_pitch_deck?
+    !self.pitch_deck_id.blank?
   end
 
   def to_param

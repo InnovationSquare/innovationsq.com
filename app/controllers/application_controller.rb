@@ -6,4 +6,9 @@ class ApplicationController < ActionController::Base
     # 404?
   end
 
+  # Use until we have a login system
+  def current_person
+    @current_person ||= Person.with_handle "cw"
+  end
+
 end
