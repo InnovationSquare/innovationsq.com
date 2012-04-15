@@ -1,0 +1,18 @@
+.grid_12.alpha
+  = render :partial => "profiles/company_header", :locals => { :company => @company }
+
+.grid_9.alpha
+  nav.interior
+    a.nav-stream href="/#{@company.handle}"
+      span
+      = "Stream"
+    - if @company.has_pitch_deck?
+      a.nav-pitch-deck href="/#{@company.handle}/pitch-deck" Pitch Deck
+    a.selected.nav-docs href="/#{@company.handle}/docs" =' "#{@company.docs_count} " + (@company.docs_count == 1 ? "Document" : "Documents")
+
+  - if @doc
+    #doc
+      iframe class="scribd_iframe_embed" src="#{@doc.embed_src}" data-auto-height="true" data-aspect-ratio="" scrolling="no" width="100%" height="600" frameborder="0"
+
+.grid_3.omega
+  = render :partial => "profiles/company_aside", :locals => { :company => @company }

@@ -40,7 +40,7 @@ class Company
   has_many :isotopes, :as => :attached_to
   belongs_to :pitch_deck, :class_name => "Doc"
 
-  attr_accessible :name, :handle, :district, :city, :state, :changing_line, :decription, :website_url, :twitter_handle, :facebook_url, :linkedin_url, :demo_url
+  attr_accessible :name, :handle, :district, :city, :state, :changing_line, :description, :website_url, :twitter_handle, :facebook_url, :linkedin_url, :demo_url
 
   before_save :set_handle
 

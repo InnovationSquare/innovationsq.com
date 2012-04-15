@@ -2,7 +2,8 @@
   .img
     img(src="/assets/profiles/#{company.handle}-100x100.jpg")
   .h
-    h1 = "#{company.name}"
+    h1
+      a(href="/#{company.handle}") = company.name
     - if @recommended
       a.button.recommended href="/#{company.handle}/unrecommend"
     - else

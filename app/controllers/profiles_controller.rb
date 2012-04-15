@@ -12,9 +12,8 @@ class ProfilesController < ApplicationController
     elsif @company
       
       @title = @company.name
-      @isotopes = @company.isotopes
-      
       setup_company @company
+      @isotopes = @company.isotopes
 
       render :action => "company"
     else
@@ -25,6 +24,7 @@ class ProfilesController < ApplicationController
 
   def pitch_deck
     @title = "Pitch Deck | #{@company.name}"
+    setup_company @company
     @pitch_deck = @company.pitch_deck
   end
 

@@ -23,14 +23,14 @@ class Doc
   after_destroy :dec_counter_cache
 
   class << self
-    
+
     def upload!(title, company, creator, file_path)
 
       Scribd::User.login ENV['SCRIBD_USERNAME'], ENV['SCRIBD_PASSWORD']
       scribd_doc = Scribd::Document.upload(:file => file_path, :access => "private")
 
       if scribd_doc.saved?
-        doc = Doc.new :title => title, :company => company, :creator => creator, :scribd_doc_id => scribd_doc.id.to_s, :scribed_doc_access_key => scribd_doc.access_key, :thumbnail_url => scribd_doc.thumbnail_url(:width => 220, :height => 220)
+        doc = Doc.new :title => title, :company => company, :creator => creator, :scribd_doc_id => scribd_doc.id.to_s, :scribd_doc_access_key => scribd_doc.access_key, :thumbnail_url => scribd_doc.thumbnail_url(:width => 220, :height => 220)
         doc.set_conversion_status scribd_doc.conversion_status
         doc.save!
         doc
@@ -38,7 +38,12 @@ class Doc
         nil
       end
     end
-    
+
+    def with_id(param)
+      id = param.to_s.split('-').last
+      Doc.find id
+    end
+
   end
 
   def set_conversion_status(status)

@@ -13,7 +13,10 @@ body { background:#f8f8f8 url(<%=asset_data_uri 'bg.png' %>) left top repeat; te
 @mixin shadow($x, $y, $blur, $color) { -moz-box-shadow:$x $y $blur $color; -webkit-box-shadow:$x $y $blur $color; box-shadow:$x $y $blur $color; }
 
 
-h1, h2, h3, h4, h5, h6 { @include display-font; color:#454748; line-height:1.5em; font-weight:normal; }
+h1, h2, h3, h4, h5, h6 {
+  @include display-font; color:#454748; line-height:1.5em; font-weight:normal;
+  a { color:#454748; }
+}
   h1 { font-size:36px; }
   h2 { font-size:22px; line-height:24px; margin-bottom:10px; }
   h3, h4 { font-size:16px; }
@@ -104,12 +107,14 @@ nav.interior {
   }
 }
 
+#pitchDeck, #doc { margin:40px 0; }
+
 ul.docs {
   margin:40px 0;
   li {
     width:220px; margin:0 13px 20px 0; float:left;
     h3 {
-      line-height:36px;
+      line-height:18px; margin:8px 0;
       a { color:#454748; }
     }
     .thumbnail {

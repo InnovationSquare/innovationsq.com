@@ -9,7 +9,6 @@
     - if @company.has_pitch_deck?
       a.nav-pitch-deck href="/#{@company.handle}/pitch-deck" Pitch Deck
     a.selected.nav-docs href="/#{@company.handle}/docs" =' "#{@company.docs_count} " + (@company.docs_count == 1 ? "Document" : "Documents")
-    a.nav-members href="/#{@company.handle}/members" Members
 
   ul.docs.clean
     - for doc in @docs do

@@ -12,7 +12,7 @@ hb_attr = {
   :handle => "hb",
   :district => "Downtown",
   :city => "Raleigh",
-  :changing_line => "We are changing higher education tutoring.",
+  :changing_line => "We are changing online tutoring for higher education.",
   :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae",
   :website_url => "http://hookboard.com"
 }
