@@ -48,8 +48,8 @@ dra.staff << p
 dra.save
 
 Doc.upload! "Downtown Raleigh", dra, p, Rails.root.join('db','seeds','downtown-raleigh.pdf')
-Doc.upload! "Map of the Business Improvement District", dra, p, Rails.root.join('db','seeds','business-improvement-district.pdf')
 Doc.upload! "Pedestrian Count Study", dra, p, Rails.root.join('db','seeds','pedestrian-count-study.pdf')
+Doc.upload! "Map of the Business Improvement District", dra, p, Rails.root.join('db','seeds','business-improvement-district.pdf')
 Doc.upload! "Fourth Quarter 2011", dra, p, Rails.root.join('db','seeds','fourth-quarter-2011.pdf')
 Doc.upload! "2011 Annual Report", dra, p, Rails.root.join('db','seeds','2011-annual-report.pdf')
 
