@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_filter :load_company_by_handle, :only => :pitch_deck
+  before_filter :load_company_by_handle, :only => [:pitch_deck, :stream]
 
   def show
     # Look for a Company First
@@ -19,7 +19,14 @@ class ProfilesController < ApplicationController
       setup_company @company
       @isotopes = @company.isotopes.desc(:created_at)
 
-      render :action => "company"
+      if @company.has_pitch_deck?
+        @pitch_deck = @company.pitch_deck
+        render :action => "pitch_deck"
+      else
+        @docs = @company.docs.desc(:created_at).includes(:creator)
+        render "docs/index"
+      end
+
     else
       # 404
     end
@@ -30,6 +37,14 @@ class ProfilesController < ApplicationController
     @title = "Pitch Deck | #{@company.name}"
     setup_company @company
     @pitch_deck = @company.pitch_deck
+  end
+
+  def stream
+    
+    @title = @company.name
+    setup_company @company
+    @isotopes = @company.isotopes.desc(:created_at)
+
   end
 
 end

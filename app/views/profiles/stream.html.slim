@@ -1,7 +1,7 @@
 .grid_12.alpha
   = render :partial => "company_header", :locals => { :company => @company }
 
-.grid_9.alpha
+.grid_7.alpha
   nav.interior
     a.selected.nav-stream href="/#{@company.handle}"
       span
@@ -12,5 +12,5 @@
 
   = render :partial => "isotopes/list", :locals => { :isotopes => @isotopes }
 
-.grid_3.omega
+.grid_5.omega.aside
   = render :partial => "company_aside", :locals => { :company => @company }

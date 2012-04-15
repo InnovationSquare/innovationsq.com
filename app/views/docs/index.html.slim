@@ -1,9 +1,9 @@
 .grid_12.alpha
   = render :partial => "profiles/company_header", :locals => { :company => @company }
 
-.grid_9.alpha
+.grid_7.alpha
   nav.interior
-    a.nav-stream href="/#{@company.handle}"
+    a.nav-stream href="/#{@company.handle}/stream"
       span
       = "Stream"
     - if @company.has_pitch_deck?
@@ -23,5 +23,9 @@
           a(href="#") + Comment
           a(href="#") Discuss
 
-.grid_3.omega
+.grid_5.omega.aside
   = render :partial => "profiles/company_aside", :locals => { :company => @company }
+
+  - if @isotopes
+    h3 Stream
+    = render :partial => "isotopes/list", :locals => { :isotopes => @isotopes }
