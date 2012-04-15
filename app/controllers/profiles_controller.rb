@@ -17,6 +17,8 @@ class ProfilesController < ApplicationController
       @recommended = @company.recommended_by? current_person
       @following = @company.followed_by? current_person
 
+      @staff = @company.staff
+
       render :action => "company"
     else
       # 404

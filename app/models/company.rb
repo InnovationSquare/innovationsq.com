@@ -18,6 +18,12 @@ class Company
   field :changing_line, :type => String
   field :description, :type => String
 
+  field :website_url, :type => String
+  field :twitter_handle, :type => String
+  field :facebook_url, :type => String
+  field :linkedin_url, :type => String
+  field :demo_url, :type => String
+
   field :hiring, :type => Boolean, :default => false
   field :seeking_investors, :type => Boolean, :default => false
   field :startup, :type => Boolean, :default => false
@@ -34,14 +40,14 @@ class Company
   has_many :isotopes, :as => :attached_to
   belongs_to :pitch_deck, :class_name => "Doc"
 
-  attr_accessible :name, :handle, :district, :city, :state
+  attr_accessible :name, :handle, :district, :city, :state, :changing_line, :decription, :website_url, :twitter_handle, :facebook_url, :linkedin_url, :demo_url
 
   before_save :set_handle
 
   class << self
 
     def with_handle(handle)
-      where(:handle => handle).limit(1).first
+      where(:handle => handle.to_s).limit(1).first
     end
 
   end

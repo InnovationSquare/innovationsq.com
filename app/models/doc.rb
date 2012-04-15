@@ -17,7 +17,7 @@ class Doc
   belongs_to :company
   belongs_to :creator, :class_name => "Person", :inverse_of => :docs
 
-  attr_accessible :title, :company, :creator, :scribd_doc_id, :thumbnail_url
+  attr_accessible :title, :company, :creator, :scribd_doc_id, :scribd_doc_access_key, :thumbnail_url
 
   after_create :inc_counter_cache
   after_destroy :dec_counter_cache
@@ -25,9 +25,9 @@ class Doc
   class << self
     
     def upload!(title, company, creator, file_path)
-      
+
       Scribd::User.login ENV['SCRIBD_USERNAME'], ENV['SCRIBD_PASSWORD']
-      scribd_doc = Scribd::Document.upload(:file => file_path)
+      scribd_doc = Scribd::Document.upload(:file => file_path, :access => "private")
 
       if scribd_doc.saved?
         doc = Doc.new :title => title, :company => company, :creator => creator, :scribd_doc_id => scribd_doc.id.to_s, :scribed_doc_access_key => scribd_doc.access_key, :thumbnail_url => scribd_doc.thumbnail_url(:width => 100, :height => 100)

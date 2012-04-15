@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   # Use until we have a login system
   def current_person
-    @current_person ||= Person.with_handle "cw"
+    @current_person ||= Person.with_handle "sirwalter"
   end
 
 end

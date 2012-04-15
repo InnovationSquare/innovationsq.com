@@ -15,7 +15,7 @@ body { background:#f8f8f8 url(<%=asset_data_uri 'bg.png' %>) left top repeat; te
 
 h1, h2, h3, h4, h5, h6 { @include display-font; color:#454748; line-height:1.5em; font-weight:normal; }
   h1 { font-size:36px; }
-  h2 { font-size:22px; }
+  h2 { font-size:22px; line-height:24px; margin-bottom:10px; }
   h3, h4 { font-size:16px; }
 
 ul.clean, ul.clean li { list-style:none; padding:0; margin:0; }
@@ -26,6 +26,8 @@ dl {  }
 a { color:#417da7; }
   a:link, a:active { text-decoration:none; }
   a:hover, a:visited { text-decoration:underline; }
+
+p { font-size:12px; }
 
 strong { font-family:'OpenSansSemibold'; }
 
@@ -41,7 +43,7 @@ button, .button, .simple-button { border:0; display:block; background:#4182b0; c
 .container_12 { text-align:left; }
 
 #header {
-  height:124px; background:transparent url(<%=asset_data_uri 'bg-stripe-thin.png' %>) left bottom repeat-x; margin-bottom:20px;
+  height:124px; background:transparent url(<%=asset_data_uri 'bg-stripe-thin.png' %>) left bottom repeat-x; margin-bottom:20px; overflow:hidden;
   .container_12 { position:relative; }
 
   nav {
@@ -87,3 +89,17 @@ nav.interior {
   }
 }
 
+.links {
+  margin:10px 0;
+  a { font-size:12px; padding-right:8px; }
+}
+
+.people-groups {
+  margin:10px 0;
+  h3 { height:32px; line-height:32px; font-size:12px; text-transform:uppercase; font-family:'OpenSansSemibold'; padding-left:10px; background:#e2e2e1 url(<%=asset_data_uri 'bg-grey.png' %>) left top repeat; }
+  ul li {
+    padding:10px; font-size:12px;
+    img { float:left; }
+    a, span { display:block; margin-left:46px; line-height:12px; padding-top:4px; }
+  }
+}

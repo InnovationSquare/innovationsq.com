@@ -21,7 +21,7 @@ class Person
   has_and_belongs_to_many :following, :class_name => "Company", :inverse_of => :followers
   has_many :docs
 
-  attr_accessible :username, :first_name, :last_name
+  attr_accessible :username, :first_name, :last_name, :title
 
   before_save :set_handle
 
