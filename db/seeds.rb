@@ -7,24 +7,34 @@ Recommendation.delete_all
 
 p = Person.create :username => "sirwalter", :first_name => "Sir Walter", :last_name => "Raleigh", :title => "City Organizer"
 
-startup = Company.create :name => "StartupApp.com", :handle => "startup", :district => "North", :city => "Raleigh", :changing_line => "We are changing apps", :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae"
-startup.pitch_deck = Doc.upload! "The Pitch", startup, p, Rails.root.join('db','seeds','mint-pitch-deck.pdf')
-startup.hiring = true
-startup.seeking_investors = true
-startup.startup = true
-startup.creator = p
-startup.founders << p
-startup.save
+hb_attr = {
+  :name => "HookBoard",
+  :handle => "hb",
+  :district => "Downtown",
+  :city => "Raleigh",
+  :changing_line => "We are changing higher education tutoring.",
+  :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae",
+  :website_url => "http://hookboard.com"
+}
+hb = Company.create hb_attr
+hb.pitch_deck = Doc.upload! "The Pitch", hb, p, Rails.root.join('db','seeds','hb-pitch-deck.pdf')
+hb.seeking_investors = true
+hb.startup = true
+hb.creator = p
+hb.founders << p
+hb.save
 
-bio = Company.create :name => "Biotech & Engineering Corp", :handle => "biotech", :district => "Downtown", :city => "Raleigh", :changing_line => "We are changing biotech", :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae"
+bio = Company.create :name => "Biotech & Engineering Corp", :handle => "biotech", :district => "Downtown", :city => "Raleigh", :changing_line => "We are changing biotech.", :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae"
 bio.creator = p
 bio.staff << p
 bio.save
 
-dra_attr = { :name => "Downtown Raleigh Alliance",
+dra_attr = {
+  :name => "Downtown Raleigh Alliance",
   :handle => "dra",
   :district => "Downtown",
   :city => "Raleigh",
+  :changing_line => "The leader and champion for a vibrant and dynamic downtown.",
   :description => "Downtown Raleigh lies at the heart of the Triangle, the fastest growing metropolitan region in the Carolinas. For businesses, residents and visitors alike, downtown is the urban center of the region, an incredible place to live, work and play.",
   :website_url => "http://www.godowntownraleigh.com/",
   :twitter_handle => "downtownraleigh",
@@ -38,9 +48,9 @@ dra.save
 
 Doc.upload! "Downtown Raleigh", dra, p, Rails.root.join('db','seeds','downtown-raleigh.pdf')
 Doc.upload! "Map of the Business Improvement District", dra, p, Rails.root.join('db','seeds','business-improvement-district.pdf')
-#Doc.upload! "Pedestrian Count Study", dra, p, Rails.root.join('db','seeds','pedestrian-count-study.pdf')
+Doc.upload! "Pedestrian Count Study", dra, p, Rails.root.join('db','seeds','pedestrian-count-study.pdf')
 Doc.upload! "Fourth Quarter 2011", dra, p, Rails.root.join('db','seeds','fourth-quarter-2011.pdf')
-#Doc.upload! "2011 Annual Report", dra, p, Rails.root.join('db','seeds','2011-annual-report.pdf')
+Doc.upload! "2011 Annual Report", dra, p, Rails.root.join('db','seeds','2011-annual-report.pdf')
 
 p.recommend! bio
 p.follow! bio
