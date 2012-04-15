@@ -1,25 +1,4 @@
-#companyHeader.grid_12.alpha
-  .img
-    img(src="/assets/profiles/#{@company.handle}-100x100.jpg")
-  .h
-    h1 = "#{@company.name}"
-    - if @recommended
-      a.button.recommended href="/#{@company.handle}/unrecommend"
-    - else
-      a.button.recommend href="/#{@company.handle}/recommend"
-    - if @following
-      a.button.following href="/#{@company.handle}/following"
-    - else
-      a.button.follow href="/#{@company.handle}/follow"
-    .stat
-      strong =' @company.recommendations_count
-      = @company.recommendations_count == 1 ? "recommendation" : "recommendations"
-    .stat
-      strong =' @company.followers.length
-      = @company.followers.length == 1 ? "follower" : "followers"
-    .stat
-      strong =' @company.district
-      = @company.city
+= render :partial => "company_header", :locals => { :company => @company }
 
 .grid_9.alpha
   nav.interior
@@ -41,28 +20,4 @@
           p = "#{iso.text}"
 
 .grid_3.omega
-  h2 = @company.changing_line
-  = simple_format @company.description
-  
-  .links
-    - unless @company.website_url.blank?
-      = link_to "website", @company.website_url
-    - unless @company.demo_url.blank?
-      = link_to "demo", @company.demo_url
-    - unless @company.twitter_handle.blank?
-      = link_to "twitter", "https://twitter.com/#{@company.twitter_handle}"
-    - unless @company.linkedin_url.blank?
-      = link_to "linkedin", @company.linkedin_url
-    - unless @company.facebook_url.blank?
-      = link_to "facebook", @company.facebook_url
-  
-  .people-groups
-    - if @staff
-      .people
-        h3 Staff
-        ul.clean
-          - for person in @staff
-            li
-              img.person-photo.small src="/assets/profiles/#{person.handle}-36x36.jpg"
-              a(href="/#{person.handle}") = person.full_name
-              span = person.title
+  = render :partial => "company_aside", :locals => { :company => @company }

@@ -30,7 +30,7 @@ class Doc
       scribd_doc = Scribd::Document.upload(:file => file_path, :access => "private")
 
       if scribd_doc.saved?
-        doc = Doc.new :title => title, :company => company, :creator => creator, :scribd_doc_id => scribd_doc.id.to_s, :scribed_doc_access_key => scribd_doc.access_key, :thumbnail_url => scribd_doc.thumbnail_url(:width => 100, :height => 100)
+        doc = Doc.new :title => title, :company => company, :creator => creator, :scribd_doc_id => scribd_doc.id.to_s, :scribed_doc_access_key => scribd_doc.access_key, :thumbnail_url => scribd_doc.thumbnail_url(:width => 220, :height => 220)
         doc.set_conversion_status scribd_doc.conversion_status
         doc.save!
         doc
@@ -56,6 +56,10 @@ class Doc
 
   def dec_counter_cache
     self.company.inc :docs_count, -1
+  end
+
+  def to_param
+    "#{self.title.parameterize}-#{self.id}"
   end
 
 end

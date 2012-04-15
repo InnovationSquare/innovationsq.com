@@ -1,0 +1,43 @@
+h2 = company.changing_line
+= simple_format company.description
+
+.links
+  - unless company.website_url.blank?
+    = link_to "website", company.website_url
+  - unless company.demo_url.blank?
+    = link_to "demo", company.demo_url
+  - unless company.twitter_handle.blank?
+    = link_to "twitter", "https://twitter.com/#{company.twitter_handle}"
+  - unless company.linkedin_url.blank?
+    = link_to "linkedin", company.linkedin_url
+  - unless company.facebook_url.blank?
+    = link_to "facebook", company.facebook_url
+
+.people-groups
+  - if @founders
+    .people
+      h3 Founders
+      ul.clean
+        - for person in @founders
+          li
+            img.person-photo.small src="/assets/profiles/#{person.handle}-36x36.jpg"
+            a(href="/#{person.handle}") = person.full_name
+            span = person.title
+  - if @staff
+    .people
+      h3 Staff
+      ul.clean
+        - for person in @staff
+          li
+            img.person-photo.small src="/assets/profiles/#{person.handle}-36x36.jpg"
+            a(href="/#{person.handle}") = person.full_name
+            span = person.title
+  - if @investors
+    .people
+      h3 Investors
+      ul.clean
+        - for person in @investors
+          li
+            img.person-photo.small src="/assets/profiles/#{person.handle}-36x36.jpg"
+            a(href="/#{person.handle}") = person.full_name
+            span = person.title

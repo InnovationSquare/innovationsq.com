@@ -1,25 +1,4 @@
-#companyHeader.grid_12.alpha
-  .img
-    img(src="/assets/profiles/#{@company.handle}-100x100.jpg")
-  .h
-    h1 = "#{@company.name}"
-    - if @recommended
-      a.button.recommended href="/#{@company.handle}/unrecommend"
-    - else
-      a.button.recommend href="/#{@company.handle}/recommend"
-    - if @following
-      a.button.following href="/#{@company.handle}/following"
-    - else
-      a.button.follow href="/#{@company.handle}/follow"
-    .stat
-      strong =' @company.recommendations_count
-      = @company.recommendations_count == 1 ? "recommendation" : "recommendations"
-    .stat
-      strong =' @company.followers.length
-      = @company.followers.length == 1 ? "follower" : "followers"
-    .stat
-      strong =' @company.district
-      = @company.city
+= render :partial => "profiles/company_header", :locals => { :company => @company }
 
 .grid_9.alpha
   nav.interior
@@ -31,7 +10,18 @@
     a.selected.nav-docs href="/#{@company.handle}/docs" =' "#{@company.docs_count} " + (@company.docs_count == 1 ? "Document" : "Documents")
     a.nav-members href="/#{@company.handle}/members" Members
 
-  - for doc in @docs do
-    img src="#{doc.thumbnail_url}"
+  ul.docs.clean
+    - for doc in @docs do
+      li
+        a.thumbnail(href="#{doc_path @company.handle, doc}")
+          img src="#{doc.thumbnail_url}"
+        a.creator(href="/#{doc.creator.handle}")
+          img.person-photo.small src="/assets/profiles/#{doc.creator.handle}-24x24.jpg"
+        h3
+          a(href="#{doc_path @company.handle, doc}") = doc.title
+        .actions
+          a(href="#") + Comment
+          a(href="#") Discuss
 
 .grid_3.omega
+  = render :partial => "profiles/company_aside", :locals => { :company => @company }

@@ -4,7 +4,8 @@ class DocsController < ApplicationController
 
   def index
     @title = "Documents | #{@company.name}"
-    @docs = @company.docs
+    @docs = @company.docs.includes(:creator)
+    setup_company @company
   end
 
 end

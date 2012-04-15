@@ -13,11 +13,8 @@ class ProfilesController < ApplicationController
       
       @title = @company.name
       @isotopes = @company.isotopes
-
-      @recommended = @company.recommended_by? current_person
-      @following = @company.followed_by? current_person
-
-      @staff = @company.staff
+      
+      setup_company @company
 
       render :action => "company"
     else
