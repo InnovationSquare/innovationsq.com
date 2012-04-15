@@ -8,22 +8,22 @@ class ProfilesController < ApplicationController
     @person = Person.with_handle params[:handle] if @company.blank?
 
     if @person
-      
+
       @title = @person.full_name
       @isotopes = @person.isotopes.desc(:created_at)
-      
+
       render :action => "person"
     elsif @company
-      
+
       @title = @company.name
       setup_company @company
-      @isotopes = @company.isotopes
+      @isotopes = @company.isotopes.desc(:created_at)
 
       render :action => "company"
     else
       # 404
     end
-    
+
   end
 
   def pitch_deck

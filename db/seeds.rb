@@ -10,6 +10,7 @@ si = Person.create :username => "iaculli", :first_name => "Steve", :last_name =>
 j = Person.create :username => "joseph", :first_name => "Joseph", :last_name => "B.", :title => "CEO"
 
 hb_attr = {
+  :creator => si,
   :name => "HookBoard",
   :handle => "hb",
   :district => "Downtown",
@@ -22,16 +23,15 @@ hb = Company.create hb_attr
 hb.pitch_deck = Doc.upload! "Pitch Deck - Screenshots", hb, si, Rails.root.join('db','seeds','hb-pitch-deck.pdf')
 hb.seeking_investors = true
 hb.startup = true
-hb.creator = si
 hb.founders << si
 hb.save
 
-bio = Company.create :name => "Biotech & Engineering Corp", :handle => "biotech", :district => "Downtown", :city => "Raleigh", :changing_line => "We are changing biotech.", :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae"
-bio.creator = j
+bio = Company.create :creator => j, :name => "Biotech & Engineering Corp", :handle => "biotech", :district => "Downtown", :city => "Raleigh", :changing_line => "We are changing biotech.", :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae"
 bio.founders << j
 bio.save
 
 dra_attr = {
+  :creator => p,
   :name => "Downtown Raleigh Alliance",
   :handle => "dra",
   :district => "Downtown",
@@ -44,7 +44,6 @@ dra_attr = {
   :linkedin_url => "http://www.linkedin.com/groups/Downtown-Raleigh-Alliance-3706299"
 }
 dra = Company.create dra_attr
-dra.creator = p
 dra.staff << p
 dra.save
 
@@ -55,5 +54,5 @@ Doc.upload! "Fourth Quarter 2011", dra, p, Rails.root.join('db','seeds','fourth-
 Doc.upload! "2011 Annual Report", dra, p, Rails.root.join('db','seeds','2011-annual-report.pdf')
 
 p.recommend! bio
-p.follow! bio
+p.follow! hb
 p.follow! dra
