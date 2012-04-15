@@ -5,7 +5,9 @@ Doc.delete_all
 Isotope.delete_all
 Recommendation.delete_all
 
-p = Person.create :username => "sirwalter", :first_name => "Sir Walter", :last_name => "Raleigh", :title => "City Organizer"
+p = Person.create :username => "sirwalter", :first_name => "Sir Walter", :last_name => "Raleigh", :title => "Explorer"
+si = Person.create :username => "iaculli", :first_name => "Steve", :last_name => "Iaculli", :title => "Entrepreneur"
+j = Person.create :username => "joseph", :first_name => "Joseph", :last_name => "B.", :title => "CEO"
 
 hb_attr = {
   :name => "HookBoard",
@@ -17,16 +19,16 @@ hb_attr = {
   :website_url => "http://hookboard.com"
 }
 hb = Company.create hb_attr
-hb.pitch_deck = Doc.upload! "The Pitch", hb, p, Rails.root.join('db','seeds','hb-pitch-deck.pdf')
+hb.pitch_deck = Doc.upload! "Pitch Deck - Screenshots", hb, si, Rails.root.join('db','seeds','hb-pitch-deck.pdf')
 hb.seeking_investors = true
 hb.startup = true
-hb.creator = p
-hb.founders << p
+hb.creator = si
+hb.founders << si
 hb.save
 
 bio = Company.create :name => "Biotech & Engineering Corp", :handle => "biotech", :district => "Downtown", :city => "Raleigh", :changing_line => "We are changing biotech.", :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae"
-bio.creator = p
-bio.staff << p
+bio.creator = j
+bio.founders << j
 bio.save
 
 dra_attr = {

@@ -10,14 +10,7 @@
       a.nav-pitch-deck href="/#{@company.handle}/pitch-deck" Pitch Deck
     a.nav-docs href="/#{@company.handle}/docs" =' "#{@company.docs_count} " + (@company.docs_count == 1 ? "Document" : "Documents")
 
-  .isotopes
-    - for iso in @isotopes
-      .isotope
-        img.profile-photo src="/assets/photo-tiny.jpg"
-        .dot
-        .body
-          .pointer
-          p = "#{iso.text}"
+  = render :partial => "isotopes/list", :locals => { :isotopes => @isotopes }
 
 .grid_3.omega
   = render :partial => "company_aside", :locals => { :company => @company }

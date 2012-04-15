@@ -8,6 +8,10 @@ class ProfilesController < ApplicationController
     @person = Person.with_handle params[:handle] if @company.blank?
 
     if @person
+      
+      @title = @person.full_name
+      @isotopes = @person.isotopes.desc(:created_at)
+      
       render :action => "person"
     elsif @company
       

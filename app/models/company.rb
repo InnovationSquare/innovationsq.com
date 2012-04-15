@@ -39,10 +39,12 @@ class Company
   has_many :docs
   has_many :isotopes, :as => :attached_to
   belongs_to :pitch_deck, :class_name => "Doc"
+  belongs_to :isotope
 
   attr_accessible :name, :handle, :district, :city, :state, :changing_line, :description, :website_url, :twitter_handle, :facebook_url, :linkedin_url, :demo_url
 
   before_save :set_handle
+  before_create :create_isotope
 
   class << self
 
@@ -50,6 +52,10 @@ class Company
       where(:handle => handle.to_s).limit(1).first
     end
 
+  end
+
+  def create_isotope
+    self.isotope = Isotope.create :verb => "added", :copy => self.company.name, :person => self.person, :attached_to => self.company, :topic => self.company, :topic_url => "/#{self.company.handle}"
   end
 
   def recommended_by?(person)

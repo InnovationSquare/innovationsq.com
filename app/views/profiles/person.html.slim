@@ -1,1 +1,19 @@
-h1 = "hello #{@person.handle}"
+.grid_12.alpha
+  #personHeader.profile-header
+    .img
+      img(src="/assets/profiles/#{@person.handle}-100x100.jpg")
+    .h
+      h1
+        a(href="/#{@person.handle}") = @person.full_name_with_title
+      .stat
+        =' "following"
+        strong = @person.following.length
+
+.grid_9.alpha
+  nav.interior
+    a.selected.nav-stream href="/#{@person.handle}"
+      span
+      = "Stream"
+  = render :partial => "isotopes/list", :locals => { :isotopes => @isotopes }
+
+.grid_3.omega

@@ -1,0 +1,20 @@
+.isotopes
+  - for iso in isotopes
+    .isotope
+      img.profile-photo src="/assets/profiles/#{iso.person.handle}-24x24.jpg"
+      .dot
+      .body
+        .pointer
+        p
+          a(href="/#{iso.person.handle}")
+            = iso.person_name
+          span.verb
+            =' " " + iso.verb
+          a(href="#{iso.topic_url}")
+            img.inline-photo src="/assets/profiles/#{iso.attached_to.handle}-24x24.jpg"
+            = iso.copy
+      .sub
+        .time-ago
+          = time_ago_in_words(iso.created_at) + " ago"
+        a.icon.comments(href="#") 2 Comments
+        a.icon.like(href="#") Like

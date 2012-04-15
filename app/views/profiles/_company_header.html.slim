@@ -1,4 +1,4 @@
-#companyHeader
+#companyHeader.profile-header
   .img
     img(src="/assets/profiles/#{company.handle}-100x100.jpg")
   .h
@@ -9,7 +9,7 @@
     - else
       a.button.recommend href="/#{company.handle}/recommend"
     - if @following
-      a.button.following href="/#{company.handle}/following"
+      a.button.following href="/#{company.handle}/unfollow"
     - else
       a.button.follow href="/#{company.handle}/follow"
     .stat

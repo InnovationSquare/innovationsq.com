@@ -16,9 +16,11 @@ class Doc
 
   belongs_to :company
   belongs_to :creator, :class_name => "Person", :inverse_of => :docs
+  belongs_to :isotope, :inverse_of => :attached_to
 
   attr_accessible :title, :company, :creator, :scribd_doc_id, :scribd_doc_access_key, :thumbnail_url
 
+  before_create :create_isotope
   after_create :inc_counter_cache
   after_destroy :dec_counter_cache
 
@@ -44,6 +46,10 @@ class Doc
       Doc.find id
     end
 
+  end
+
+  def create_isotope
+    self.isotope = Isotope.create :verb => "uploaded a document", :copy => self.title, :person => self.creator, :attached_to => self.company, :topic => self, :topic_url => "/#{self.company.handle}/docs/#{self.to_param}"
   end
 
   def set_conversion_status(status)
