@@ -27,6 +27,7 @@ hb.founders << si
 hb.save
 
 bio = Company.create :creator => j, :name => "Biotech & Engineering Corp", :handle => "biotech", :district => "Downtown", :city => "Raleigh", :changing_line => "We are changing biotech.", :description => "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et dae"
+bio.pitch_deck = Doc.upload! "Pitch Deck", j, si, Rails.root.join('db','seeds','mint-pitch-deck.pdf')
 bio.founders << j
 bio.save
 
